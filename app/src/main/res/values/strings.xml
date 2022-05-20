@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">AppChat-Firebase</string>
+    <string name="hello_blank_fragment">hello_blank_fragment</string>
+    <string name="search">Search</string>
+    <string name="content_description_search">content_description_search</string>
+    <string name="more">More</string>
+    <string name="content_description_more">content_description_more</string>
+    <string name="chat_page">Chat Page</string>
+    <string name="people_page">People Page</string>
+    <string name="setting_page">Setting Page</string>
 </resources>
