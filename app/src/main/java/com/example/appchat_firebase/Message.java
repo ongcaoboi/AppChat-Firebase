@@ -51,6 +51,7 @@ public class Message extends AppCompatActivity {
                 if(TextUtils.isEmpty(strMessage)){
                     return;
                 }
+
                 mListMessage.add(new MessageOj(strMessage));
                 messageAdapter.notifyDataSetChanged();
                 rcvMessage.scrollToPosition(mListMessage.size()-1);

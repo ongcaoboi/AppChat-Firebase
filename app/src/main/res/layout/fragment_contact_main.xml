@@ -6,9 +6,10 @@
     tools:context=".ContactMain">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:layout_margin="16dp"
+        android:id="@+id/lv_contact"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is contact main" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

@@ -1,9 +1,9 @@
 package com.example.appchat_firebase;
 
 public class MessageOj {
-    public MessageOj(String message) {
-        this.message = message;
-    }
+
+
+    private String message;
 
     public String getMessage() {
         return message;
@@ -13,5 +13,7 @@ public class MessageOj {
         this.message = message;
     }
 
-    private String message;
+    public MessageOj(String message) {
+        this.message = message;
+    }
 }
