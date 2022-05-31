@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:layout_margin="16dp"
+    android:layout_margin="8dp"
     android:layout_height="wrap_content">
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -13,7 +13,6 @@
         android:layout_height="80dp"
         android:adjustViewBounds="true"
         android:scaleType="center"
-        android:src="@drawable/avatar"
         app:shapeAppearanceOverlay="@style/BotronImg"/>
 
     <LinearLayout
@@ -25,17 +24,17 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv_name_contact"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Le Hong Tu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-                                            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_name_contact"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Le Hong Tu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
         <TextView
             android:id="@+id/condition_contact"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:text="Đang hoạt động/Rời máy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

@@ -27,6 +27,22 @@ public class ContactMain extends Fragment {
         arrayUser = new ArrayList<UserOj>();
         arrayUser.add(new UserOj("01", "Tụ", "Lê","123123123",true,true));
         arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
+        arrayUser.add(new UserOj("01", "Tụ 2", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
+        arrayUser.add(new UserOj("01", "Tụ 3", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
+        arrayUser.add(new UserOj("01", "Tụ 4", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
+        arrayUser.add(new UserOj("01", "Tụ 5", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
+        arrayUser.add(new UserOj("01", "Tụ 6", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
+        arrayUser.add(new UserOj("01", "Tụ 7", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
+        arrayUser.add(new UserOj("01", "Tụ 8", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
+        arrayUser.add(new UserOj("01", "Tụ 9", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
         adapter = new UserAdapter(container.getContext(),R.layout.item_contact,arrayUser);
         lvUser.setAdapter(adapter);
         // Inflate the layout for this fragment
