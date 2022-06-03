@@ -26,6 +26,7 @@ public class Message extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+        getSupportActionBar().hide();
 
         edtMessage = findViewById(R.id.edt_message);
         btnSend = findViewById(R.id.btn_send);

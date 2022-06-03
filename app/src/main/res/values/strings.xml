@@ -8,4 +8,10 @@
     <string name="chat_page">Chat Page</string>
     <string name="people_page">People Page</string>
     <string name="setting_page">Setting Page</string>
+    <string name="tin_nhan">Tin nhắn</string>
+    <string name="lien_he">Liên hệ</string>
+    <string name="cai_dat">Cài Đặt</string>
+    <string name="lien_he1">Liên Hệ</string>
+    <string name="tin_nhan1">Tin Nhắn</string>
+    <string name="chi_tiet">Chi tiết</string>
 </resources>

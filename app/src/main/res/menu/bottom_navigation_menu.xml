@@ -4,15 +4,15 @@
         android:id="@+id/page_1"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_chat_24"
-        android:title="@string/chat_page"/>
+        android:title="@string/tin_nhan1"/>
     <item
         android:id="@+id/page_2"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_people_alt_24"
-        android:title="@string/people_page"/>
+        android:title="@string/lien_he1"/>
     <item
         android:id="@+id/page_3"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="@string/setting_page"/>
+        android:title="@string/cai_dat"/>
 </menu>
