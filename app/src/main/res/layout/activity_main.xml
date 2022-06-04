@@ -14,6 +14,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <!-- End Top Navigation Bar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nav_bar_top"
+        android:background="@color/white_gray"/>
 
     <FrameLayout
         android:id="@+id/body_main"
@@ -26,6 +33,13 @@
 
 
     <!-- Start Bottom Navigation Bar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nav_bar_bottom"
+        android:background="@color/white_gray"/>
     <include
         android:id="@+id/nav_bar_bottom"
         layout="@layout/bottom_navigation_bar"

@@ -7,9 +7,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -21,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     SettingsMain settingsMain;
     FragmentTransaction ft;
 
+    TextView titleMain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
         contactMain = new ContactMain();
         settingsMain = new SettingsMain();
 
+        titleMain = (TextView) findViewById(R.id.txt_name_user);
+
         setFragment(chatsMain);
+        titleMain.setText("Đoạn chat");
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -39,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.page_1:
+                        titleMain.setText("Đoạn chat");
                         setFragment(chatsMain);
                         return true;
                     case R.id.page_2:
+                        titleMain.setText("Danh bạ");
                         setFragment(contactMain);
                         return true;
                     case R.id.page_3:
@@ -55,14 +65,14 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setOnItemReselectedListener(new NavigationBarView.OnItemReselectedListener() {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.page_1:
-                        ScrollView scrollView = (ScrollView) findViewById(R.id.scroll_chat_main);
-                        scrollView.fullScroll(ScrollView.FOCUS_UP);
-                        break;
-                    case R.id.page_2:
-                        Toast.makeText(MainActivity.this, "Page_2", Toast.LENGTH_SHORT).show();
-                        break;
+                ListView listView;
+                if(item.getItemId() == R.id.page_1){
+                    listView = (ListView) findViewById(R.id.lv_chat_page);
+                    listView.smoothScrollToPosition(0);
+                }
+                else if (item.getItemId() == R.id.page_2){
+                    listView = (ListView) findViewById(R.id.lv_contact);
+                    listView.smoothScrollToPosition(0);
                 }
             }
         });

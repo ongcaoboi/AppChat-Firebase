@@ -3,17 +3,20 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:layout_margin="16dp"
     android:layout_height="wrap_content">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_avatar"
-        android:layout_margin="16dp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:adjustViewBounds="true"
         android:scaleType="center"
-        app:shapeAppearanceOverlay="@style/BotronImg"/>
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+        />
 
     <LinearLayout
         android:layout_gravity="center"
@@ -23,15 +26,16 @@
 
         <TextView
             android:id="@+id/tv_name"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="18sp"
             android:text="Le Hong Tu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/tv_lastest_message"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:text="Hello Peter"
+            android:textColor="@color/gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
