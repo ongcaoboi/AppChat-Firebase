@@ -1,11 +1,12 @@
 package com.example.appchat_firebase;
 
 public class UserOj {
-    private  String id,firstName,lastName,sdt;
+    private  String id, email, firstName,lastName,sdt;
     private boolean gioiTinh,trangThai;
 
-    public UserOj(String id, String firstName, String lastName, String sdt, boolean gioiTinh, boolean trangThai) {
+    public UserOj(String id, String email, String firstName, String lastName, String sdt, boolean gioiTinh, boolean trangThai) {
         this.id = id;
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.sdt = sdt;
@@ -16,6 +17,8 @@ public class UserOj {
     public String getId() {
         return id;
     }
+
+    public String getEmail() { return email; }
 
     public void setId(String id) {
         this.id = id;
@@ -39,6 +42,10 @@ public class UserOj {
 
     public String getSdt() {
         return sdt;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
     }
 
     public void setSdt(String sdt) {

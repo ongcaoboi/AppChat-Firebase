@@ -25,8 +25,8 @@ public class ContactMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_contact_main, container, false);
         lvUser = (ListView) view.findViewById(R.id.lv_contact);
         arrayUser = new ArrayList<UserOj>();
-        arrayUser.add(new UserOj("01", "Tụ", "Lê","123123123",true,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,false));
+        arrayUser.add(new UserOj("01", "tule@gmail.com","Tụ", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "tuananh@email.com","Tuấn Anh", "Hứa","1231231231233",false,false));
 
         adapter = new UserAdapter(container.getContext(),R.layout.item_contact,arrayUser);
         lvUser.setAdapter(adapter);

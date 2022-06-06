@@ -24,31 +24,9 @@ public class ChatMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_chat_main, container, false);
         lvUser = (ListView) view.findViewById(R.id.lv_chat_page);
         arrayUser = new ArrayList<UserOj>();
-        arrayUser.add(new UserOj("01", "Tụ", "Lê","123123123",true,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
-        arrayUser.add(new UserOj("02", "Tuấn Anh", "Hứa","1231231231233",false,true));
+        arrayUser.add(new UserOj("01", "tule@gmail.com","Tụ", "Lê","123123123",true,true));
+        arrayUser.add(new UserOj("02", "tuananh@email.com","Tuấn Anh", "Hứa","1231231231233",false,false));
+
 
         adapter = new ChatMainAdapter(container.getContext(),R.layout.item_chatpage,arrayUser);
         lvUser.setAdapter(adapter);
