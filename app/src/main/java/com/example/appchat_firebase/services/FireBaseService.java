@@ -10,10 +10,13 @@ public class FireBaseService {
     private DatabaseReference mRootreference;
     private DatabaseReference mChildreference;
 
+    public String idKeyUser;
+
     public FireBaseService(UserOj user){
         firebaseDatabase = FirebaseDatabase.getInstance();
         mRootreference = firebaseDatabase.getReference();
-        mChildreference = mRootreference.child("users").child("_123491");
+        idKeyUser = firebaseDatabase.getReference("users").push().getKey();
+        mChildreference = mRootreference.child("users").child(idKeyUser);
         mChildreference.setValue(user);
     }
 
