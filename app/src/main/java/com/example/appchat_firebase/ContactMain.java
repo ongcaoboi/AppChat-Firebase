@@ -1,5 +1,6 @@
 package com.example.appchat_firebase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ public class ContactMain extends Fragment {
 
     private List<UserOj> arrayUser;
     private UserAdapter adapter;
-    private ListView lvUser;
+    public ListView lvUser;
 
     private DatabaseReference userDatabase;
 
@@ -57,7 +58,11 @@ public class ContactMain extends Fragment {
         lvUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Intent intent = new Intent(getContext(), Message.class);
+                UserOj user = arrayUser.get(i);
+                intent.putExtra("id", user.getId());
+                intent.putExtra("name", user.getFirstName()+user.getLastName());
+                startActivity(intent);
             }
         });
 
