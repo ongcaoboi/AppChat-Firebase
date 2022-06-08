@@ -4,6 +4,8 @@ public class UserOj {
     private  String id, email, firstName,lastName,sdt;
     private boolean gioiTinh,trangThai;
 
+    public UserOj(){}
+
     public UserOj(String id, String email, String firstName, String lastName, String sdt, boolean gioiTinh, boolean trangThai) {
         this.id = id;
         this.email = email;

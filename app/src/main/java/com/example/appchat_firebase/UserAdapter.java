@@ -41,10 +41,13 @@ public class UserAdapter extends ArrayAdapter<UserOj> {
         UserOj user = ulist.get(position);
         viewHolder.imgAvatar.setBackgroundResource(R.drawable.avatar);
         viewHolder.tvName.setText(user.getFirstName().toString()+" "+user.getLastName().toString());
-        String status = "Rời máy";
+        String status = "";
         if(user.isTrangThai()){
             status = "Đang hoạt động";
             viewHolder.tvTrangThai.setTextColor(Color.parseColor("#10e53e"));
+        }else {
+            status = "Rời máy";
+            viewHolder.tvTrangThai.setTextColor(Color.parseColor("#818181"));
         }
         viewHolder.tvTrangThai.setText(status);
 

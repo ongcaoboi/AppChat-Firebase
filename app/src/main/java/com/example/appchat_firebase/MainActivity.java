@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setFragment(chatsMain);
         titleMain.setText("Đoạn chat");
 
-        UserOj testFireBase = new UserOj("", "tuanAnh2@gmail.com", "Tuan", "Anh", "0987654321", true, true);
-        FireBaseService fireBaseService = new FireBaseService(testFireBase);
-
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
