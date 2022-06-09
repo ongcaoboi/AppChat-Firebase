@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,9 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         setFragment(chatsMain);
         titleMain.setText("Đoạn chat");
-
-        UserOj testFireBase = new UserOj("", "tuanAnh2@gmail.com", "Tuan", "Anh", "0987654321", true, true);
-        FireBaseService fireBaseService = new FireBaseService(testFireBase);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

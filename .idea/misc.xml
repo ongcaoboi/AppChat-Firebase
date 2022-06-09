@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/bg_blue_conner.xml" value="0.153" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/bg_blue_conner_left.xml" value="0.172" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_main.xml" value="0.21041666666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_message.xml" value="0.1" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_settings.xml" value="0.22447916666666667" />
@@ -10,6 +12,7 @@
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/fragment_blank.xml" value="0.22447916666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/fragment_chat_main.xml" value="0.22447916666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/fragment_contact_main.xml" value="0.22447916666666667" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/item_another_user.xml" value="0.1" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/item_chatpage.xml" value="0.22447916666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/item_contact.xml" value="0.22447916666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/item_massage.xml" value="0.22447916666666667" />
