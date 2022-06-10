@@ -9,7 +9,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+
+import com.example.appchat_firebase.services.Global;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class Message extends AppCompatActivity {
                     return;
                 }
 
-                mListMessage.add(new MessageOj(strMessage));
+                mListMessage.add(new MessageOj(strMessage, Global.user.getId(), System.currentTimeMillis(), 0));
                 messageAdapter.notifyDataSetChanged();
                 rcvMessage.scrollToPosition(mListMessage.size()-1);
 

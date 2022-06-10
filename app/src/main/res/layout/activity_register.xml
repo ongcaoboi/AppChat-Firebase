@@ -34,7 +34,7 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -55,7 +55,7 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Số điện thoại"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -77,13 +77,14 @@
         android:ems="10"
         android:hint="Họ"
         android:inputType="textPersonName"
+        android:layout_marginRight="5dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/inputSdt"
+        app:layout_constraintEnd_toStartOf="@+id/inputLastName"
         app:layout_constraintStart_toStartOf="@+id/inputSdt"
         app:layout_constraintTop_toBottomOf="@+id/inputSdt" />
 
@@ -94,61 +95,80 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/input_background"
         android:drawableLeft="@android:drawable/ic_menu_edit"
-        android:drawablePadding="10dp"
+        android:drawablePadding="5dp"
         android:ems="10"
         android:hint="Tên"
         android:inputType="textPersonName"
+        android:layout_marginLeft="10dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/inputFirstName"
-        app:layout_constraintStart_toStartOf="@+id/inputFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/inputFirstName" />
+        app:layout_constraintEnd_toEndOf="@+id/inputSdt"
+        app:layout_constraintStart_toEndOf="@+id/inputFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/inputSdt" />
 
-    <EditText
-        android:id="@+id/inputGioiTinh"
-        android:layout_width="0dp"
+    <RadioGroup
+        android:id="@+id/radioGroupGender"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_margin="20dp"
         android:background="@drawable/input_background"
-        android:drawableLeft="@drawable/ic_gender"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Giới tính"
-        android:inputType="textPersonName"
+        android:drawableLeft="@android:drawable/ic_menu_edit"
         android:paddingLeft="20dp"
-        android:paddingTop="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/inputLastName"
-        app:layout_constraintStart_toStartOf="@+id/inputLastName"
-        app:layout_constraintTop_toBottomOf="@+id/inputLastName" />
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputLastName">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_gender"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="Giới tính"/>
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Nam"
+            android:textSize="18dp" />
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Nữ"
+            android:textSize="18dp" />
+    </RadioGroup>
     <EditText
         android:id="@+id/inputPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/input_background"
         android:drawableLeft="@drawable/ic_security"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Mật khẩu"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/inputGioiTinh"
-        app:layout_constraintStart_toStartOf="@+id/inputGioiTinh"
-        app:layout_constraintTop_toBottomOf="@+id/inputGioiTinh" />
+        app:layout_constraintEnd_toEndOf="@+id/radioGroupGender"
+        app:layout_constraintStart_toStartOf="@+id/radioGroupGender"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupGender" />
 
     <EditText
         android:id="@+id/inputRePassword"
@@ -160,7 +180,7 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Nhập lại mật khẩu"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -171,11 +191,22 @@
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
+    <TextView
+        android:id="@+id/messageToast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/red"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:textFontWeight="500"
+        app:layout_constraintTop_toBottomOf="@id/inputRePassword"/>
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/btn_background"
         android:text="Register"
         android:textColor="@color/white"
@@ -183,7 +214,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/inputRePassword"
         app:layout_constraintStart_toStartOf="@+id/inputRePassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputRePassword" />
+        app:layout_constraintTop_toBottomOf="@+id/messageToast" />
 
     <TextView
         android:id="@+id/txtLogin"

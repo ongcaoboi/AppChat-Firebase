@@ -38,14 +38,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 LinearLayout.LayoutParams. MATCH_PARENT ,
                 LinearLayout.LayoutParams. WRAP_CONTENT ) ;
         // Thử tin nhắn 2 bên
-        if(message.getMessage().equals("1")){
+        if(message.getMsg().equals("1")){
             layoutParams.setMargins(0, 0, 200, 0);
             holder.layoutMessage.setLayoutParams(layoutParams);
             holder.layoutMessage.setGravity(Gravity.START);
 
             holder.tvMassage.setBackgroundResource(R.drawable.bg_blue_conner_left);
             holder.tvMassage.setTextColor(0xFF000000);
-            holder.tvMassage.setText(message.getMessage());
+            holder.tvMassage.setText(message.getMsg());
         }else{
             layoutParams.setMargins(200, 0, 0, 0);
             holder.layoutMessage.setLayoutParams(layoutParams);
@@ -53,7 +53,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
             holder.tvMassage.setBackgroundResource(R.drawable.bg_blue_conner);
             holder.tvMassage.setTextColor(0xFFFFFFFF);
-            holder.tvMassage.setText(message.getMessage());
+            holder.tvMassage.setText(message.getMsg());
         }
     }
 

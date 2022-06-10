@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.appchat_firebase.services.Global;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +45,9 @@ public class ContactMain extends Fragment {
                 arrayUser.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     UserOj user = dataSnapshot.getValue(UserOj.class);
+                    if(user.getId().equals(Global.user.getId())){
+                        continue;
+                    }
                     arrayUser.add(user);
                 }
                 adapter.notifyDataSetChanged();

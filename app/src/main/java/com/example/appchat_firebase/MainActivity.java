@@ -10,12 +10,10 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.appchat_firebase.services.FireBaseService;
-import com.google.android.material.appbar.MaterialToolbar;
+import com.example.appchat_firebase.services.Global;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         setFragment(chatsMain);
         titleMain.setText("Đoạn chat");
-
-        UserOj testFireBase = new UserOj("", "tuanAnh2@gmail.com", "Tuan", "Anh", "0987654321", true, true);
-        FireBaseService fireBaseService = new FireBaseService(testFireBase);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
