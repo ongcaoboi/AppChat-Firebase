@@ -62,11 +62,12 @@ public class ContactMain extends Fragment {
         lvUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getContext(), Message.class);
-                UserOj user = arrayUser.get(i);
-                intent.putExtra("id", user.getId());
-                intent.putExtra("name", user.getFirstName()+user.getLastName());
-                startActivity(intent);
+                Toast.makeText(getContext(), "Chờ trung làm giao diện thông tin tk", Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(getContext(), Message.class);
+//                UserOj user = arrayUser.get(i);
+//                intent.putExtra("id", user.getId());
+//                intent.putExtra("name", user.getFirstName()+user.getLastName());
+//                startActivity(intent);
             }
         });
 

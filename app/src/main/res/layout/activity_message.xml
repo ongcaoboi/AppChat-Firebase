@@ -4,11 +4,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Message">
+    <include
+        android:id="@+id/nav_bar_top"
+        layout="@layout/top_message_navigation_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_message"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/nav_bar_top"
         android:layout_above="@+id/lo_bottom"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"

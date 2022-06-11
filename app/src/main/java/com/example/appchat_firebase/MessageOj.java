@@ -1,8 +1,5 @@
 package com.example.appchat_firebase;
 
-
-import java.util.Comparator;
-
 public class MessageOj {
 
     private String msg, userId;
@@ -51,11 +48,4 @@ public class MessageOj {
     }
 
     public MessageOj(){}
-
-    public static Comparator<MessageOj> compare = new Comparator<MessageOj>(){
-        @Override
-        public int compare(MessageOj m1, MessageOj m2) {
-            return m1.time > m2.time ? 1 : 0;
-        }
-    };
 }

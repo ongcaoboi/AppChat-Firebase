@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appchat_firebase.services.Global;
+
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder>{
@@ -37,22 +39,22 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams. MATCH_PARENT ,
                 LinearLayout.LayoutParams. WRAP_CONTENT ) ;
-        // Thử tin nhắn 2 bên
-        if(message.getMsg().equals("1")){
-            layoutParams.setMargins(0, 0, 200, 0);
-            holder.layoutMessage.setLayoutParams(layoutParams);
-            holder.layoutMessage.setGravity(Gravity.START);
 
-            holder.tvMassage.setBackgroundResource(R.drawable.bg_blue_conner_left);
-            holder.tvMassage.setTextColor(0xFF000000);
-            holder.tvMassage.setText(message.getMsg());
-        }else{
+        if(message.getUserId().equals(Global.user.getId())){
             layoutParams.setMargins(200, 0, 0, 0);
             holder.layoutMessage.setLayoutParams(layoutParams);
             holder.layoutMessage.setGravity(Gravity.END);
 
             holder.tvMassage.setBackgroundResource(R.drawable.bg_blue_conner);
             holder.tvMassage.setTextColor(0xFFFFFFFF);
+            holder.tvMassage.setText(message.getMsg());
+        }else{
+            layoutParams.setMargins(0, 0, 200, 0);
+            holder.layoutMessage.setLayoutParams(layoutParams);
+            holder.layoutMessage.setGravity(Gravity.START);
+
+            holder.tvMassage.setBackgroundResource(R.drawable.bg_blue_conner_left);
+            holder.tvMassage.setTextColor(0xFF000000);
             holder.tvMassage.setText(message.getMsg());
         }
     }
