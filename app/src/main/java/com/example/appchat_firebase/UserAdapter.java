@@ -39,7 +39,11 @@ public class UserAdapter extends ArrayAdapter<UserOj> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         UserOj user = ulist.get(position);
-        viewHolder.imgAvatar.setBackgroundResource(R.drawable.avatar);
+        if(user.isGioiTinh()){
+            viewHolder.imgAvatar.setBackgroundResource(R.drawable.male);
+        }else {
+            viewHolder.imgAvatar.setBackgroundResource(R.drawable.female);
+        }
         viewHolder.tvName.setText(user.getFirstName().toString()+" "+user.getLastName().toString());
         String status = "";
         if(user.isTrangThai()){

@@ -40,13 +40,18 @@ public class ChatMainAdapter extends ArrayAdapter<UserOj> {
             viewHolder.tvName = (TextView) convertView.findViewById(R.id.tv_name);
             viewHolder.tvLastestMessage = (TextView) convertView.findViewById(R.id.tv_lastest_message);
             viewHolder.imgAvatar = (ImageView) convertView.findViewById(R.id.image_avatar);
+            viewHolder.dotStatus = (ImageView) convertView.findViewById(R.id.dot_status);
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         UserOj user = ulist.get(position);
-        viewHolder.imgAvatar.setBackgroundResource(R.drawable.avatar);
+        if(user.isGioiTinh()){
+            viewHolder.imgAvatar.setBackgroundResource(R.drawable.male);
+        }else {
+            viewHolder.imgAvatar.setBackgroundResource(R.drawable.female);
+        }
         viewHolder.tvName.setText(user.getFirstName().toString()+" "+user.getLastName().toString());
         String newMessage = "";
         if(chatInfos.get(position).getMessageNew().getUserId().equals(Global.user.getId())){
@@ -55,6 +60,11 @@ public class ChatMainAdapter extends ArrayAdapter<UserOj> {
             newMessage =ulist.get(position).getLastName()+": "+chatInfos.get(position).getMessageNew().getMsg();
         }
         viewHolder.tvLastestMessage.setText(newMessage);
+        if(user.isTrangThai()){
+            viewHolder.dotStatus.setBackgroundResource(R.drawable.dot_online);
+        }else{
+            viewHolder.dotStatus.setBackgroundResource(R.drawable.dot_offline);
+        }
 
         return convertView;
     }
@@ -64,5 +74,6 @@ public class ChatMainAdapter extends ArrayAdapter<UserOj> {
         ImageView imgAvatar;
         TextView tvName;
         TextView tvLastestMessage;
+        ImageView dotStatus;
     }
 }

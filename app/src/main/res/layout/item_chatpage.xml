@@ -18,9 +18,18 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
         />
 
+    <ImageView
+        android:id="@+id/dot_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="-30dp"
+        android:background="@drawable/dot_online"/>
+
     <LinearLayout
         android:layout_gravity="center"
         android:orientation="vertical"
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -38,7 +47,7 @@
             android:textColor="@color/gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+z
 
     </LinearLayout>
 

@@ -27,6 +27,7 @@ public class activity_login extends AppCompatActivity {
     private Button btnLogin;
     private String email, password;
     private UserOj user;
+    private boolean isLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +87,14 @@ public class activity_login extends AppCompatActivity {
                             toastMessage.setText("Mật khẩu không chính xác");
                             return;
                         }
+                        user.setTrangThai(true);
                         Global.user = user;
-                        Intent intent = new Intent(activity_login.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        if(!isLogin){
+                            Intent intent = new Intent(activity_login.this, MainActivity.class);
+                            startActivity(intent);
+                            isLogin = true;
+                            finish();
+                        }
                     }
 
                     @Override

@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.appchat_firebase.services.ChatProcess;
+import com.example.appchat_firebase.services.ChatTmp;
 import com.example.appchat_firebase.services.Global;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ContactMain extends Fragment {
@@ -62,7 +65,53 @@ public class ContactMain extends Fragment {
         lvUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(), "Chờ trung làm giao diện thông tin tk", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(getContext(), ActivityUserInfo.class);
+                UserOj user = arrayUser.get(i);
+                intent.putExtra("name", user.getFirstName()+" "+user.getLastName());
+                String gender = "male";
+                if(!user.isGioiTinh()) gender = "female";
+                String status = "offline";
+                if(user.isTrangThai()) status = "online";
+                intent.putExtra("gender", gender);
+                intent.putExtra("status", status);
+                intent.putExtra("id", user.getId());
+                startActivity(intent);
+
+//                DatabaseReference dbContact = FirebaseDatabase.getInstance().getReference("chats");
+//                dbContact.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        String idChat = "";
+//                        for(DataSnapshot chat : snapshot.getChildren()){
+//                            String key = chat.getKey();
+//                            ChatTmp chatTmp = chat.getValue(ChatTmp.class);
+//                            if(chatTmp.getUser_1().equals(Global.user.getId())){
+//                                if(chatTmp.getUser_2().equals(arrayUser.get(i))){
+//                                    idChat = key;
+//                                }
+//                            }else if(chatTmp.getUser_2().equals(Global.user.getId())){
+//                                if(chatTmp.getUser_1().equals(arrayUser.get(i))){
+//                                    idChat = key;
+//                                }
+//                            }
+//                        }
+//                        if(idChat.equals("")){
+//                            idChat = dbContact.push().getKey();
+//                            ChatTmp chatTmp = new ChatTmp(Global.user.getId(), arrayUser.get(i).getId(), null);
+//                            dbContact.child(idChat).setValue(chatTmp);
+//                        }
+//                        Intent intent = new Intent(getContext(), Message.class);
+//                        intent.putExtra("idChat", idChat);
+//                        intent.putExtra("idUserChat", arrayUser.get(i).getId());
+//                        startActivity(intent);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
 //                Intent intent = new Intent(getContext(), Message.class);
 //                UserOj user = arrayUser.get(i);
 //                intent.putExtra("id", user.getId());

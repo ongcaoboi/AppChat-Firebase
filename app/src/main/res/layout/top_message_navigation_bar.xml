@@ -14,12 +14,14 @@
             android:layout_height="wrap_content"
             app:menu="@menu/top_message_bar"
             style="@style/Widget.MaterialComponents.Toolbar.Surface" >
-            <ImageView
+
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_avatar_contact"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="10dp"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_baseline_account_circle_24"
+                android:padding="6dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
                 />
             <TextView
                 android:id="@+id/tv_name_contact"
@@ -30,6 +32,12 @@
                 android:textStyle="bold"
                 android:textSize="20dp"
                 />
+            <ImageView
+                android:id="@+id/dot_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/dot_online"/>
         </com.google.android.material.appbar.MaterialToolbar>
 
 

@@ -36,6 +36,7 @@ public class Message extends AppCompatActivity {
     private String idChat, idUserChat;
     private UserOj userChat;
     private DatabaseReference dbMessages;
+    private ImageView dotStatus, imgUserChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class Message extends AppCompatActivity {
         btnSend = findViewById(R.id.btn_send);
         rcvMessage = findViewById(R.id.rcv_message);
         tvUserChat = findViewById(R.id.tv_name_contact);
+        dotStatus = findViewById(R.id.dot_status);
+        imgUserChat = (ImageView) findViewById(R.id.image_avatar_contact);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvMessage.setLayoutManager(linearLayoutManager);
@@ -87,6 +90,17 @@ public class Message extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userChat = snapshot.getValue(UserOj.class);
                 tvUserChat.setText(userChat.getFirstName()+" "+userChat.getLastName());
+                if(userChat.isTrangThai()){
+                    dotStatus.setBackgroundResource(R.drawable.dot_online);
+                }else{
+                    dotStatus.setBackgroundResource(R.drawable.dot_offline);
+                }
+
+                if(userChat.isGioiTinh()){
+                    imgUserChat.setBackgroundResource(R.drawable.male);
+                }else {
+                    imgUserChat.setBackgroundResource(R.drawable.female);
+                }
             }
 
             @Override

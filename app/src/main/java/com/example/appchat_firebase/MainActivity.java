@@ -7,7 +7,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,18 +18,17 @@ import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigation;
-    ChatMain chatsMain;
-    ContactMain contactMain;
-    SettingsMain settingsMain;
-    FragmentTransaction ft;
-
-    TextView titleMain;
-
-    DatabaseReference databaseReference;
+    private BottomNavigationView bottomNavigation;
+    private ChatMain chatsMain;
+    private ContactMain contactMain;
+    private FragmentTransaction ft;
+    private TextView titleMain;
+    private DatabaseReference dbUser;
+    private ImageView imgUserMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +38,28 @@ public class MainActivity extends AppCompatActivity {
 
         chatsMain = new ChatMain();
         contactMain = new ContactMain();
-        settingsMain = new SettingsMain();
 
         titleMain = (TextView) findViewById(R.id.txt_name_user);
+        imgUserMain = (ImageView) findViewById(R.id.img_user_main);
 
         setFragment(chatsMain);
         titleMain.setText("Đoạn chat");
+
+        if(Global.user == null){
+            finish();
+        }
+
+        if(Global.user.isGioiTinh()){
+            imgUserMain.setBackgroundResource(R.drawable.male);
+        }else {
+            imgUserMain.setBackgroundResource(R.drawable.female);
+        }
+
+        dbUser = FirebaseDatabase.getInstance().getReference("users").child(Global.user.getId());
+        dbUser.setValue(Global.user);
+        UserOj user = Global.user;
+        user.setTrangThai(false);
+        dbUser.onDisconnect().setValue(user);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -58,20 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(contactMain);
                         return true;
                     case R.id.page_3:
-//                        setFragment(settingsMain);
-                        String name = Global.user.getFirstName() + " " + Global.user.getLastName();
-                        String email = Global.user.getEmail();
-                        String sdt = Global.user.getSdt();
-                        String gender = "male" ;
-                        if(!Global.user.isGioiTinh()){
-                            gender = "female";
-                        }
-                        Intent i = new Intent(MainActivity.this , ActivitySetting.class);
-                        i.putExtra("name",name);
-                        i.putExtra("email",email);
-                        i.putExtra("sdt",sdt);
-                        i.putExtra("gender",gender);
-                        startActivity(i);
+                        openSetting();
                         return true;
                     default:
                         return false;
@@ -90,8 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     listView = (ListView) findViewById(R.id.lv_contact);
                     listView.smoothScrollToPosition(0);
                 } else if (item.getItemId() == R.id.page_3){
-                    Intent i = new Intent(MainActivity.this , ActivitySetting.class);
-                    startActivity(i);
+                    openSetting();
                 }
             }
         });
@@ -100,5 +103,30 @@ public class MainActivity extends AppCompatActivity {
         ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.body_main, fragment);
         ft.commit();
+    }
+    public void openSetting(){
+        String name = Global.user.getFirstName() + " " + Global.user.getLastName();
+        String email = Global.user.getEmail();
+        String sdt = Global.user.getSdt();
+        String gender = "male" ;
+        if(!Global.user.isGioiTinh()){
+            gender = "female";
+        }
+        Intent i = new Intent(getApplicationContext(), ActivitySetting.class);
+        i.putExtra("name",name);
+        i.putExtra("email",email);
+        i.putExtra("sdt",sdt);
+        i.putExtra("gender",gender);
+        startActivityForResult(i,5);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode==5) {
+            if(resultCode==RESULT_OK) {
+                finish();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

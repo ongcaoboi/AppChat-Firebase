@@ -62,12 +62,15 @@ public class ChatMain extends Fragment {
                         messages.add(messageOj);
                     }
                     messages.sort(Comparator.comparing(MessageOj::getTime).reversed());
-                    if(chatTmp.getUser_1().equals(Global.user.getId())){
-                        ChatProcess chatP = new ChatProcess(key, chatTmp.getUser_2(), messages.get(0));
-                        arrChatProcess.add(chatP);
-                    }else if(chatTmp.getUser_2().equals(Global.user.getId())){
-                        ChatProcess chatP = new ChatProcess(key, chatTmp.getUser_1(), messages.get(0));
-                        arrChatProcess.add(chatP);
+                    if(!messages.isEmpty()){
+
+                        if(chatTmp.getUser_1().equals(Global.user.getId())){
+                            ChatProcess chatP = new ChatProcess(key, chatTmp.getUser_2(), messages.get(0));
+                            arrChatProcess.add(chatP);
+                        }else if(chatTmp.getUser_2().equals(Global.user.getId())){
+                            ChatProcess chatP = new ChatProcess(key, chatTmp.getUser_1(), messages.get(0));
+                            arrChatProcess.add(chatP);
+                        }
                     }
                 }
                 userDatabase = FirebaseDatabase.getInstance().getReference().child("users");

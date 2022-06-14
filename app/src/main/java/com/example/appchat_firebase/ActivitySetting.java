@@ -48,9 +48,6 @@ public class ActivitySetting extends AppCompatActivity {
             tv_PhoneNumber.setText(sdt);
             tv_Email.setText(email);
         }
-
-
-
         btnQL = (Button) findViewById(R.id.btnQL);
         btnQL.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +68,8 @@ public class ActivitySetting extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ActivitySetting.this , activity_login.class);
                 startActivity(intent);
-                Global.user = null ;
-
+                Global.user = null;
+                setResult(RESULT_OK);
                 finish();
             }
         });
