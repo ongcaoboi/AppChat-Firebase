@@ -14,4 +14,5 @@
     <string name="lien_he1">Liên Hệ</string>
     <string name="tin_nhan1">Tin Nhắn</string>
     <string name="chi_tiet">Chi tiết</string>
+    <string name="gui">Gửi</string>
 </resources>
