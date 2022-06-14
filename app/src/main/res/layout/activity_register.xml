@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_register"
-    android:background="@drawable/background_login">
+    tools:context=".activity_register">
 
     <TextView
         android:id="@+id/register"
@@ -13,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Register"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,8 +38,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register" />
@@ -60,8 +59,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/inputEmail"
         app:layout_constraintStart_toStartOf="@+id/inputEmail"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
@@ -82,8 +81,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/inputLastName"
         app:layout_constraintStart_toStartOf="@+id/inputSdt"
         app:layout_constraintTop_toBottomOf="@+id/inputSdt" />
@@ -104,8 +103,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/inputSdt"
         app:layout_constraintStart_toEndOf="@+id/inputFirstName"
         app:layout_constraintTop_toBottomOf="@+id/inputSdt" />
@@ -130,14 +129,14 @@
             android:paddingRight="20dp"
             android:drawablePadding="10dp"
             android:drawableLeft="@drawable/ic_gender"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20dp"
             android:text="Giới tính"/>
         <RadioButton
             android:id="@+id/radioMale"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text="Nam"
             android:textSize="18dp" />
 
@@ -145,7 +144,7 @@
             android:id="@+id/radioFemale"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text="Nữ"
             android:textSize="18dp" />
     </RadioGroup>
@@ -164,8 +163,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/radioGroupGender"
         app:layout_constraintStart_toStartOf="@+id/radioGroupGender"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupGender" />
@@ -185,8 +184,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/inputPassword"
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
@@ -221,7 +220,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bạn đã có Tài khoản  ?"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnLogin"

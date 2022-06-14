@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.appchat_firebase.services.Global;
+import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DatabaseReference;
@@ -56,7 +58,20 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(contactMain);
                         return true;
                     case R.id.page_3:
-                        setFragment(settingsMain);
+//                        setFragment(settingsMain);
+                        String name = Global.user.getFirstName() + " " + Global.user.getLastName();
+                        String email = Global.user.getEmail();
+                        String sdt = Global.user.getSdt();
+                        String gender = "male" ;
+                        if(!Global.user.isGioiTinh()){
+                            gender = "female";
+                        }
+                        Intent i = new Intent(MainActivity.this , ActivitySetting.class);
+                        i.putExtra("name",name);
+                        i.putExtra("email",email);
+                        i.putExtra("sdt",sdt);
+                        i.putExtra("gender",gender);
+                        startActivity(i);
                         return true;
                     default:
                         return false;
@@ -74,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
                 else if (item.getItemId() == R.id.page_2){
                     listView = (ListView) findViewById(R.id.lv_contact);
                     listView.smoothScrollToPosition(0);
+                } else if (item.getItemId() == R.id.page_3){
+                    Intent i = new Intent(MainActivity.this , ActivitySetting.class);
+                    startActivity(i);
                 }
             }
         });

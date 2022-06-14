@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivitySetting"
-    android:background="@drawable/background_login">
+    android:clipToPadding="false"
+    tools:context=".ActivitySetting">
 
     <ImageView
         android:id="@+id/img_User"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,17 +18,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07999998"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/female" />
 
     <TextView
         android:id="@+id/tv_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:drawableLeft="@drawable/ic_baseline_online"
         android:drawablePadding="10dp"
         android:text="Tên tài khoản"
-        android:textColor="@color/white"
+        android:background="@drawable/text_border_"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,14 +36,15 @@
         app:layout_constraintTop_toBottomOf="@+id/img_User" />
 
     <TextView
-        android:id="@+id/tv_RePassword"
+        android:id="@+id/tv_Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:drawableLeft="@drawable/ic_security"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/text_border_"
+        android:drawableLeft="@drawable/ic_email"
         android:drawablePadding="10dp"
-        android:text="Đổi mật khẩu"
-        android:textColor="@color/white"
+        android:text="Email"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tv_Name"
@@ -51,15 +52,62 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_Name" />
 
     <TextView
+        android:id="@+id/tv_PhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:drawableLeft="@drawable/ic_numbered"
+        android:background="@drawable/text_border_"
+        android:drawablePadding="10dp"
+        android:text="Số điện thoại"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_Email"
+        app:layout_constraintStart_toStartOf="@+id/tv_Email"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Email" />
+
+    <TextView
+        android:id="@+id/tv_RePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:drawableLeft="@drawable/ic_security"
+        android:background="@drawable/text_border_"
+        android:drawablePadding="10dp"
+        android:text="Đổi mật khẩu"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_PhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/tv_PhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PhoneNumber" />
+
+    <TextView
         android:id="@+id/tv_Logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Đăng xuất"
-        android:textColor="@color/white"
+        android:background="@drawable/text_border_"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tv_RePassword"
         app:layout_constraintStart_toStartOf="@+id/tv_RePassword"
         app:layout_constraintTop_toBottomOf="@+id/tv_RePassword" />
+
+    <Button
+        android:id="@+id/btnQL"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

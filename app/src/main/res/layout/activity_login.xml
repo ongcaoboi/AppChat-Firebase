@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_login"
-    android:background="@drawable/background_login">
+    tools:context=".activity_login">
 
     <TextView
         android:id="@+id/login"
@@ -13,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Login"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,8 +38,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
@@ -61,8 +60,8 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/inputEmail"
         app:layout_constraintStart_toStartOf="@+id/inputEmail"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
@@ -98,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Quên mật khẩu ?"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/inputPassword"
@@ -119,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bạn chưa có tài khoản ? "
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"/>
 
         <TextView
