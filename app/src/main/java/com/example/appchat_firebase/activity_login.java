@@ -34,7 +34,8 @@ public class activity_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
-        if(Global.user != null ){
+        new Global(this);
+        if(Global.isLogin()){
             Intent intent = new Intent(activity_login.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -88,7 +89,7 @@ public class activity_login extends AppCompatActivity {
                             return;
                         }
                         user.setTrangThai(true);
-                        Global.user = user;
+                        Global.login(user);
                         if(!isLogin){
                             Intent intent = new Intent(activity_login.this, MainActivity.class);
                             startActivity(intent);

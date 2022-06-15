@@ -142,6 +142,8 @@ public class ActivityUserInfo extends AppCompatActivity {
         Button btnCancel = dialog.findViewById(R.id.btn_cancel);
         Button btnSend = dialog.findViewById(R.id.btn_send);
 
+        tvTitle.setText(tvTitle.getText().toString()+" "+nameUserChat);
+
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

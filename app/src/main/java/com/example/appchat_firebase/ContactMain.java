@@ -2,10 +2,14 @@ package com.example.appchat_firebase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,12 +28,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 public class ContactMain extends Fragment {
 
     private List<UserOj> arrayUser;
+    private List<UserOj> arrayUserOld;
     private UserAdapter adapter;
     public ListView lvUser;
+    private EditText editSearchContact;
 
     private DatabaseReference userDatabase;
 
@@ -39,9 +46,10 @@ public class ContactMain extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contact_main, container, false);
         lvUser = (ListView) view.findViewById(R.id.lv_contact);
+        editSearchContact = (EditText) view.findViewById(R.id.input_search_contact);
         arrayUser = new ArrayList<UserOj>();
         userDatabase = FirebaseDatabase.getInstance().getReference("users");
-        adapter = new UserAdapter(container.getContext(),R.layout.item_contact,arrayUser);
+        setAdapter(arrayUser);
         userDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -53,6 +61,7 @@ public class ContactMain extends Fragment {
                     }
                     arrayUser.add(user);
                 }
+                arrayUserOld = arrayUser;
                 adapter.notifyDataSetChanged();
             }
 
@@ -77,53 +86,45 @@ public class ContactMain extends Fragment {
                 intent.putExtra("status", status);
                 intent.putExtra("id", user.getId());
                 startActivity(intent);
+            }
+        });
 
-//                DatabaseReference dbContact = FirebaseDatabase.getInstance().getReference("chats");
-//                dbContact.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        String idChat = "";
-//                        for(DataSnapshot chat : snapshot.getChildren()){
-//                            String key = chat.getKey();
-//                            ChatTmp chatTmp = chat.getValue(ChatTmp.class);
-//                            if(chatTmp.getUser_1().equals(Global.user.getId())){
-//                                if(chatTmp.getUser_2().equals(arrayUser.get(i))){
-//                                    idChat = key;
-//                                }
-//                            }else if(chatTmp.getUser_2().equals(Global.user.getId())){
-//                                if(chatTmp.getUser_1().equals(arrayUser.get(i))){
-//                                    idChat = key;
-//                                }
-//                            }
-//                        }
-//                        if(idChat.equals("")){
-//                            idChat = dbContact.push().getKey();
-//                            ChatTmp chatTmp = new ChatTmp(Global.user.getId(), arrayUser.get(i).getId(), null);
-//                            dbContact.child(idChat).setValue(chatTmp);
-//                        }
-//                        Intent intent = new Intent(getContext(), Message.class);
-//                        intent.putExtra("idChat", idChat);
-//                        intent.putExtra("idUserChat", arrayUser.get(i).getId());
-//                        startActivity(intent);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//                Intent intent = new Intent(getContext(), Message.class);
-//                UserOj user = arrayUser.get(i);
-//                intent.putExtra("id", user.getId());
-//                intent.putExtra("name", user.getFirstName()+user.getLastName());
-//                startActivity(intent);
+        editSearchContact.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String value = editSearchContact.getText().toString().toLowerCase(Locale.ROOT);
+                search(value);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
         lvUser.setAdapter(adapter);
-        // Inflate the layout for this fragment
         return view;
     }
-
-
+    private void search(String text){
+        if(text.isEmpty()){
+            setAdapter(arrayUserOld);
+            return;
+        }
+        List<UserOj> listUserTmp = new ArrayList<>();
+        for(UserOj user : arrayUser){
+            if(user.getFirstName().toLowerCase(Locale.ROOT).contains(text) || user.getLastName().toLowerCase(Locale.ROOT).contains(text)){
+                listUserTmp.add(user);
+            }
+        }
+        setAdapter(listUserTmp);
+    }
+    private void setAdapter(List list){
+        adapter = new UserAdapter(getContext(),R.layout.item_contact,list);
+        lvUser.setAdapter(adapter);
+    }
 }

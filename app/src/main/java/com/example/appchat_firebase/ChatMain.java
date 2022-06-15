@@ -2,16 +2,20 @@ package com.example.appchat_firebase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.appchat_firebase.services.ChatMainTmp;
 import com.example.appchat_firebase.services.ChatProcess;
 import com.example.appchat_firebase.services.ChatTmp;
 import com.example.appchat_firebase.services.Global;
@@ -24,18 +28,20 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 
 public class ChatMain extends Fragment {
 
-    private List<UserOj> arrayUser;
+    private List<ChatMainTmp> chatMainTmp;
+    private List<ChatMainTmp> chatMainTmpOld;
+    private List<ChatProcess> arrChatProcess;
     private ChatMainAdapter adapter;
     private ListView lvUser;
+    private EditText editSearchChat;
 
     private DatabaseReference userDatabase;
     private DatabaseReference chatDatabase;
-    private List<ChatProcess> arrChatProcess;
-    private List<ChatProcess> arrChatInfo;
 
 
     @Override
@@ -43,10 +49,11 @@ public class ChatMain extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat_main, container, false);
         lvUser = (ListView) view.findViewById(R.id.lv_chat_page);
-        arrayUser = new ArrayList<UserOj>();
+        editSearchChat = (EditText) view.findViewById(R.id.input_search_chat_main);
+
+        chatMainTmp = new ArrayList<>();
+        chatMainTmpOld = new ArrayList<>();
         arrChatProcess = new ArrayList<ChatProcess>();
-        arrChatInfo = new ArrayList<ChatProcess>();
-        adapter = new ChatMainAdapter(container.getContext(),R.layout.item_chatpage,arrayUser, arrChatInfo);
 
         chatDatabase = FirebaseDatabase.getInstance().getReference().child("chats");
         chatDatabase.addValueEventListener(new ValueEventListener() {
@@ -63,7 +70,6 @@ public class ChatMain extends Fragment {
                     }
                     messages.sort(Comparator.comparing(MessageOj::getTime).reversed());
                     if(!messages.isEmpty()){
-
                         if(chatTmp.getUser_1().equals(Global.user.getId())){
                             ChatProcess chatP = new ChatProcess(key, chatTmp.getUser_2(), messages.get(0));
                             arrChatProcess.add(chatP);
@@ -77,8 +83,8 @@ public class ChatMain extends Fragment {
                 userDatabase.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        arrayUser.clear();
-                        arrChatInfo.clear();
+                        chatMainTmp.clear();
+                        chatMainTmpOld.clear();
                         for (DataSnapshot user : snapshot.getChildren()){
                             UserOj userTmp = user.getValue(UserOj.class);
                             if(userTmp.getId().equals(Global.user.getId())){
@@ -86,12 +92,19 @@ public class ChatMain extends Fragment {
                             }
                             for(ChatProcess itemChat : arrChatProcess){
                                 if(userTmp.getId().equals(itemChat.getIdUser())){
-                                    arrayUser.add(userTmp);
-                                    arrChatInfo.add(itemChat);
+                                    ChatMainTmp chat_ = new ChatMainTmp(userTmp, itemChat);
+                                    chatMainTmp.add(chat_);
+                                    break;
                                 }
                             }
                         }
-                        adapter.notifyDataSetChanged();
+                        chatMainTmp.sort((o1, o2) -> {
+                            if(o1.getChatInfo().getMessageNew().getTime() == o2.getChatInfo().getMessageNew().getTime())
+                                return 0;
+                            return o1.getChatInfo().getMessageNew().getTime() < o2.getChatInfo().getMessageNew().getTime() ? 1 : -1;
+                        });
+                        chatMainTmpOld = chatMainTmp;
+                        setAdapter(chatMainTmp);
                     }
 
                     @Override
@@ -107,17 +120,51 @@ public class ChatMain extends Fragment {
             }
         });
 
-        lvUser.setAdapter(adapter);
-
         lvUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getContext(), Message.class);
-                intent.putExtra("idChat", arrChatInfo.get(i).getIdChat());
-                intent.putExtra("idUserChat", arrayUser.get(i).getId());
+                intent.putExtra("idChat", chatMainTmp.get(i).getChatInfo().getIdChat());
+                intent.putExtra("idUserChat", chatMainTmp.get(i).getUser().getId());
                 startActivity(intent);
             }
         });
+
+        editSearchChat.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String value = editSearchChat.getText().toString().toLowerCase(Locale.ROOT);
+                search(value);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         return view;
+    }
+    private void search(String text){
+        if(text.isEmpty()){
+            setAdapter(chatMainTmpOld);
+            return;
+        }
+        List<ChatMainTmp> listChatTmp = new ArrayList<>();
+        for(ChatMainTmp chat : chatMainTmp){
+            if(chat.getUser().getFirstName().toLowerCase(Locale.ROOT).contains(text) || chat.getUser().getLastName().toLowerCase(Locale.ROOT).contains(text)){
+                listChatTmp.add(chat);
+            }
+        }
+        setAdapter(listChatTmp);
+    }
+    private void setAdapter(List list){
+        adapter = new ChatMainAdapter(getContext(),R.layout.item_chatpage,list);
+        lvUser.setAdapter(adapter);
     }
 }

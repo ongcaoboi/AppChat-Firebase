@@ -31,7 +31,7 @@ public class Message extends AppCompatActivity {
     private MessageAdapter messageAdapter;
     private List<MessageOj> mListMessage;
     private EditText edtMessage;
-    private Button btnSend;
+    private Button btnSend, btnBack;
     private TextView tvUserChat;
     private String idChat, idUserChat;
     private UserOj userChat;
@@ -46,6 +46,7 @@ public class Message extends AppCompatActivity {
 
         edtMessage = findViewById(R.id.edt_message);
         btnSend = findViewById(R.id.btn_send);
+        btnBack = findViewById(R.id.btn_back);
         rcvMessage = findViewById(R.id.rcv_message);
         tvUserChat = findViewById(R.id.tv_name_contact);
         dotStatus = findViewById(R.id.dot_status);
@@ -128,6 +129,13 @@ public class Message extends AppCompatActivity {
 
                 messageAdapter.notifyDataSetChanged();
                 edtMessage.setText("");
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

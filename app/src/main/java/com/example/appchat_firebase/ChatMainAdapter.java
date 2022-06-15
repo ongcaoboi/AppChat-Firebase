@@ -11,23 +11,22 @@ import android.widget.TextView;
 
 import androidx.lifecycle.GenericLifecycleObserver;
 
+import com.example.appchat_firebase.services.ChatMainTmp;
 import com.example.appchat_firebase.services.ChatProcess;
 import com.example.appchat_firebase.services.Global;
 
 import java.util.List;
 
-public class ChatMainAdapter extends ArrayAdapter<UserOj> {
+public class ChatMainAdapter extends ArrayAdapter<ChatMainTmp> {
     private Context context;
     private int resource;
-    private List<UserOj> ulist;
-    private List<ChatProcess> chatInfos;
+    private List<ChatMainTmp> chatMainTmp;
 
-    public ChatMainAdapter(Context context, int resource, List<UserOj> objects, List<ChatProcess> chatInfos) {
+    public ChatMainAdapter(Context context, int resource, List<ChatMainTmp> objects) {
         super(context, resource, objects);
         this.context=context;
         this.resource=resource;
-        this.ulist=objects;
-        this.chatInfos=chatInfos;
+        this.chatMainTmp=objects;
     }
 
     @Override
@@ -46,7 +45,7 @@ public class ChatMainAdapter extends ArrayAdapter<UserOj> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        UserOj user = ulist.get(position);
+        UserOj user = chatMainTmp.get(position).getUser();
         if(user.isGioiTinh()){
             viewHolder.imgAvatar.setBackgroundResource(R.drawable.male);
         }else {
@@ -54,12 +53,16 @@ public class ChatMainAdapter extends ArrayAdapter<UserOj> {
         }
         viewHolder.tvName.setText(user.getFirstName().toString()+" "+user.getLastName().toString());
         String newMessage = "";
-        if(chatInfos.get(position).getMessageNew().getUserId().equals(Global.user.getId())){
-            newMessage = "Bạn: "+chatInfos.get(position).getMessageNew().getMsg();
+        if(chatMainTmp.get(position).getChatInfo().getMessageNew().getUserId().equals(Global.user.getId())){
+            newMessage = "Bạn: "+chatMainTmp.get(position).getChatInfo().getMessageNew().getMsg();
         }else{
-            newMessage =ulist.get(position).getLastName()+": "+chatInfos.get(position).getMessageNew().getMsg();
+            newMessage =chatMainTmp.get(position).getUser().getLastName()+": "+chatMainTmp.get(position).getChatInfo().getMessageNew().getMsg();
         }
-        viewHolder.tvLastestMessage.setText(newMessage);
+        String value = newMessage;
+        if(newMessage.length() > 35){
+            value = newMessage.substring(0,31)+"...";
+        }
+        viewHolder.tvLastestMessage.setText(value);
         if(user.isTrangThai()){
             viewHolder.dotStatus.setBackgroundResource(R.drawable.dot_online);
         }else{

@@ -31,8 +31,7 @@
         android:id="@+id/lo_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="0dp">
+        android:layout_alignParentBottom="true">
 
         <EditText
             android:id="@+id/edt_message"
@@ -43,10 +42,7 @@
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@+id/btn_send"
             android:background="@drawable/bg_conner_message_edittext"
-            android:hint="   EnterMessage"
-            android:padding="2dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
+            android:hint="Nhập tin nhắn..."
             android:textColor="@color/black"
             android:textSize="18sp" />
 

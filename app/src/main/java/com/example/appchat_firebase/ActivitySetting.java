@@ -84,7 +84,7 @@ public class ActivitySetting extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ActivitySetting.this , activity_login.class);
                 startActivity(intent);
-                Global.user = null;
+                Global.logout();
                 setResult(RESULT_OK);
                 finish();
             }
@@ -138,10 +138,10 @@ public class ActivitySetting extends AppCompatActivity {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(edtFirstname_.getText().toString().equals(oldFirstName) || edtLastname_.getText().toString().equals(oldLastName) || edtPhonenumber_.getText().toString().equals(oldPhoneNumber) ){
-//                    Toast.makeText(getApplicationContext(), "Hãy thay đổi thông tin của bạn ! ", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
+                if(edtFirstname_.getText().toString().equals(oldFirstName) && edtLastname_.getText().toString().equals(oldLastName) && edtPhonenumber_.getText().toString().equals(oldPhoneNumber) ){
+                    Toast.makeText(getApplicationContext(), "Hãy thay đổi thông tin của bạn ! ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(edtFirstname_.getText().toString().equals("") || edtLastname_.getText().toString().equals("") || edtPhonenumber_.getText().toString().equals("") ){
                     Toast.makeText(getApplicationContext(), "Hãy thay đổi thông tin của bạn ! ", Toast.LENGTH_SHORT).show();
                     return;
@@ -153,19 +153,16 @@ public class ActivitySetting extends AppCompatActivity {
                 user1.setSdt(edtPhonenumber_.getText().toString());
                 dbUser.setValue(user1);
 
-                Global.user = user1;
+                Global.update(user1);
 
                 String name = Global.user.getFirstName()+ " " + Global.user.getLastName();
                 tv_Name.setText(name);
                 tv_PhoneNumber.setText(Global.user.getSdt());
 
+                Toast.makeText(getApplicationContext(), "Đã chỉnh sửa! ", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
-
             }
         });
-
         dialog.show();
-
-
     }
 }

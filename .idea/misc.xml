@@ -4,11 +4,25 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/bg_blue_conner.xml" value="0.153" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/bg_blue_conner_full.xml" value="0.172" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/bg_blue_conner_left.xml" value="0.172" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/bg_conner_message_edittext.xml" value="0.1755" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/bg_gray_conner.xml" value="0.172" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/btn_background.xml" value="0.172" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/dot_offline.xml" value="0.172" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/dot_online.xml" value="0.172" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/drawable/input_background_gray.xml" value="0.1755" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_login.xml" value="0.22083333333333333" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_main.xml" value="0.21041666666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_message.xml" value="0.1" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_register.xml" value="0.22083333333333333" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_setting.xml" value="0.22083333333333333" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_settings.xml" value="0.22447916666666667" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/activity_user_info.xml" value="0.22083333333333333" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/bottom_navigation_bar.xml" value="0.22447916666666667" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/dialog_send_message.xml" value="0.21979166666666666" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/dialog_settings.xml" value="0.22447916666666667" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/dot_online.xml" value="0.21979166666666666" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/fragment_blank.xml" value="0.22447916666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/fragment_chat_main.xml" value="0.22447916666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/fragment_contact_main.xml" value="0.22447916666666667" />
@@ -16,48 +30,32 @@
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/item_chatpage.xml" value="0.22447916666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/item_contact.xml" value="0.22447916666666667" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/item_massage.xml" value="0.22447916666666667" />
+        <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/top_message_navigation_bar.xml" value="0.22083333333333333" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/layout/top_navigation_bar.xml" value="0.12454710144927536" />
         <entry key="..\:/HocTap/HK_II_2021-2022/LapTrinhThietBiDiDong/BaiCuoiKy/AppChat-Firebase/app/src/main/res/menu/top_app_bar.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/bg_blue_conner.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/bg_conner_message_edittext.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/btn_background.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/dot_online.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_chat_24.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_offline.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_online.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_email.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_gender.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_launcher_background.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_numbered.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_person.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_security.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_send_24.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/input_background.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/text_border_.xml" value="0.352" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_login.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/bg_blue_conner.xml" value="0.243" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_chat_24.xml" value="0.244" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.244" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.244" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_online.xml" value="0.244" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/ic_baseline_people_alt_24.xml" value="0.244" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/drawable/item_chatpage.xml" value="0.1475" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_message.xml" value="0.11428571428571428" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_settings.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/bottom_navigation_bar.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/fragment_blank.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/fragment_chat_main.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/fragment_contact_main.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/fragment_settings_main.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/item_chatpage.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/item_contact.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/item_massage.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/top_navigation_bar.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/menu/top_app_bar.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/ASUS-PRO/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.244" />
         <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_main.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_message.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_register.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_setting.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_settings.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/activity_user_info.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/bottom_navigation_bar.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/dialog_send_message.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/dialog_settings.xml" value="0.33645833333333336" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/fragment_blank.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/fragment_chat_main.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/fragment_contact_main.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/fragment_settings_main.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/item_chatpage.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/item_contact.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/item_massage.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/top_message_navigation_bar.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/layout/top_navigation_bar.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.35052083333333334" />
-        <entry key="..\:/Users/Trung/AndroidStudioProjects/AppChat-Firebase/app/src/main/res/menu/top_app_bar.xml" value="0.35052083333333334" />
       </map>
     </option>
   </component>

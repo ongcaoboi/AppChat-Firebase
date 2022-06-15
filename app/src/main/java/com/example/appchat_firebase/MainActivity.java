@@ -55,11 +55,9 @@ public class MainActivity extends AppCompatActivity {
             imgUserMain.setBackgroundResource(R.drawable.female);
         }
 
-        dbUser = FirebaseDatabase.getInstance().getReference("users").child(Global.user.getId());
-        dbUser.setValue(Global.user);
-        UserOj user = Global.user;
-        user.setTrangThai(false);
-        dbUser.onDisconnect().setValue(user);
+        dbUser = FirebaseDatabase.getInstance().getReference("users").child(Global.user.getId()).child("trangThai");
+        dbUser.setValue(true);
+        dbUser.onDisconnect().setValue(false);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
