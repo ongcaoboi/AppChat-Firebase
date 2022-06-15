@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_background"
-        android:drawableLeft="@drawable/ic_numbered"
+        android:drawableLeft="@android:drawable/ic_menu_call"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Số điện thoại"

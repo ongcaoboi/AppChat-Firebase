@@ -27,7 +27,6 @@
         android:layout_marginTop="24dp"
         android:drawablePadding="10dp"
         android:text="Tên tài khoản"
-        android:background="@drawable/text_border_"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -40,7 +39,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@drawable/text_border_"
         android:drawableLeft="@drawable/ic_email"
         android:drawablePadding="10dp"
         android:text="Email"
@@ -57,7 +55,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:drawableLeft="@drawable/ic_numbered"
-        android:background="@drawable/text_border_"
         android:drawablePadding="10dp"
         android:text="Số điện thoại"
         android:textColor="@color/black"
@@ -68,20 +65,36 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_Email" />
 
     <TextView
-        android:id="@+id/tv_RePassword"
+        android:id="@+id/tv_ReInfo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
         android:layout_marginTop="50dp"
-        android:drawableLeft="@drawable/ic_security"
         android:background="@drawable/text_border_"
+        android:drawableLeft="@drawable/ic_person"
         android:drawablePadding="10dp"
-        android:text="Đổi mật khẩu"
+        android:text="Chỉnh sửa thông tin"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tv_PhoneNumber"
         app:layout_constraintStart_toStartOf="@+id/tv_PhoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/tv_PhoneNumber" />
+
+    <TextView
+        android:id="@+id/tv_RePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/text_border_"
+        android:drawableLeft="@drawable/ic_security"
+        android:drawablePadding="10dp"
+        android:text="Đổi mật khẩu"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_ReInfo"
+        app:layout_constraintStart_toStartOf="@+id/tv_ReInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ReInfo" />
 
     <TextView
         android:id="@+id/tv_Logout"
