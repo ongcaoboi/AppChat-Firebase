@@ -7,14 +7,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.appchat_firebase.services.Global;
-import com.google.android.gms.common.api.GoogleApi;
+import com.example.appchat_firebase.services.LogNotificationService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DatabaseReference;
@@ -54,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         }else {
             imgUserMain.setBackgroundResource(R.drawable.female);
         }
+
+//        Intent intent = new Intent(this, LogNotificationService.class);
+//        startForegroundService(intent);
+
 
         dbUser = FirebaseDatabase.getInstance().getReference("users").child(Global.user.getId()).child("trangThai");
         dbUser.setValue(true);

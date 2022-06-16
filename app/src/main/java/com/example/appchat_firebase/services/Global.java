@@ -4,9 +4,13 @@ import android.content.Context;
 
 import com.example.appchat_firebase.UserOj;
 
+import java.util.List;
+
 public class Global {
     public static UserOj user;
     public static DBManager dbManager;
+    public static String idChatOnOpen;
+    public static List<ChatMainTmp> chats;
 
     public Global(Context context){
         dbManager = new DBManager(context);

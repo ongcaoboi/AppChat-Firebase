@@ -103,6 +103,7 @@ public class ChatMain extends Fragment {
                                 return 0;
                             return o1.getChatInfo().getMessageNew().getTime() < o2.getChatInfo().getMessageNew().getTime() ? 1 : -1;
                         });
+                        Global.chats = chatMainTmp;
                         chatMainTmpOld = chatMainTmp;
                         setAdapter(chatMainTmp);
                     }

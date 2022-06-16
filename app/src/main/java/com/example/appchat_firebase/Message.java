@@ -65,6 +65,8 @@ public class Message extends AppCompatActivity {
         idChat = intentChat.getStringExtra("idChat");
         idUserChat = intentChat.getStringExtra("idUserChat");
 
+        Global.idChatOnOpen = idChat;
+
         dbMessages = FirebaseDatabase.getInstance().getReference("chats").child(idChat).child("messages");
         dbMessages.addValueEventListener(new ValueEventListener() {
             @Override
@@ -138,5 +140,10 @@ public class Message extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Global.idChatOnOpen = null;
     }
 }
