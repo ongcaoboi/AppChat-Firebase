@@ -79,11 +79,13 @@ public class ContactMain extends Fragment {
                 UserOj user = arrayUser.get(i);
                 intent.putExtra("name", user.getFirstName()+" "+user.getLastName());
                 String gender = "male";
+                String sdt = Global.user.getSdt();
                 if(!user.isGioiTinh()) gender = "female";
                 String status = "offline";
                 if(user.isTrangThai()) status = "online";
                 intent.putExtra("gender", gender);
                 intent.putExtra("status", status);
+                intent.putExtra("sdt", sdt);
                 intent.putExtra("id", user.getId());
                 startActivity(intent);
             }

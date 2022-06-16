@@ -58,6 +58,21 @@
         app:layout_constraintStart_toStartOf="@+id/liner_info"
         app:layout_constraintTop_toBottomOf="@+id/liner_info" />
 
+    <TextView
+        android:id="@+id/tv_PhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_baseline_phone_24"
+        android:drawablePadding="10dp"
+        android:text="Số điện thoại"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_Chat"
+        app:layout_constraintStart_toStartOf="@+id/tv_Chat"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Chat" />
+
     <Button
         android:id="@+id/btnQL"
         android:layout_width="40dp"

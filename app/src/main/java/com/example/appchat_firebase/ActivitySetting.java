@@ -2,11 +2,14 @@ package com.example.appchat_firebase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -33,7 +36,7 @@ public class ActivitySetting extends AppCompatActivity {
     private String name , email,sdt ;
     private String gender;
     private DatabaseReference dbUser;
-    private String oldFirstName , oldLastName , oldPhoneNumber;
+    private String oldFirstName , oldLastName , oldPhoneNumber , OldPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,7 @@ public class ActivitySetting extends AppCompatActivity {
         email = intentMain.getStringExtra("email");
         sdt = intentMain.getStringExtra("sdt");
         gender = intentMain.getStringExtra("gender");
+
         if(gender.equals("male")){
             img_User.setBackgroundResource(R.drawable.male);
         } else {
@@ -64,6 +68,7 @@ public class ActivitySetting extends AppCompatActivity {
             tv_PhoneNumber.setText(sdt);
             tv_Email.setText(email);
         }
+
         btnQL = (Button) findViewById(R.id.btnQL);
         btnQL.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,22 +80,27 @@ public class ActivitySetting extends AppCompatActivity {
         tv_ReInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog(Gravity.CENTER);
+                openDialog_ReInfo(Gravity.CENTER);
+            }
+        });
+
+        tv_RePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog_RePassword(Gravity.CENTER);
             }
         });
 
         tv_Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ActivitySetting.this , activity_login.class);
-                startActivity(intent);
-                Global.logout();
-                setResult(RESULT_OK);
-                finish();
+
+                AlertDialog dialog = Alert_Logout();
+                dialog.show();
             }
         });
     }
-    private void openDialog(int gra){
+    private void openDialog_ReInfo(int gra){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_settings);
@@ -117,7 +127,7 @@ public class ActivitySetting extends AppCompatActivity {
         EditText edtPhonenumber_ = dialog.findViewById(R.id.edtPhoneNumber_);
         Button btnCancel = dialog.findViewById(R.id.btn_cancel);
         Button btnConfirm = dialog.findViewById(R.id.btn_confirm);
-        TextView toastMessage = dialog.findViewById(R.id.messageToast);
+//        TextView toastMessage = dialog.findViewById(R.id.messageToast);
 
 
         edtFirstname_.setText(Global.user.getFirstName());
@@ -143,7 +153,7 @@ public class ActivitySetting extends AppCompatActivity {
                     return;
                 }
                 if(edtFirstname_.getText().toString().equals("") || edtLastname_.getText().toString().equals("") || edtPhonenumber_.getText().toString().equals("") ){
-                    Toast.makeText(getApplicationContext(), "Hãy thay đổi thông tin của bạn ! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Không được để trống! ", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 dbUser = FirebaseDatabase.getInstance().getReference("users").child(Global.user.getId());
@@ -165,4 +175,122 @@ public class ActivitySetting extends AppCompatActivity {
         });
         dialog.show();
     }
+    private void openDialog_RePassword(int gra){
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_repassword);
+        Window window = dialog.getWindow();
+        if (window == null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gra;
+        window.setAttributes(windowAttributes);
+
+        if(Gravity.BOTTOM == gra){
+            dialog.setCancelable(true);
+        } else {
+            dialog.setCancelable(false);
+        }
+
+        EditText edt_OldPass = dialog.findViewById(R.id.edt_OldPassword);
+        EditText edt_NewPass = dialog.findViewById(R.id.edt_NewPassword);
+        EditText edt_ReNewPass = dialog.findViewById(R.id.edt_ReNewPassword);
+        Button btnCancel = dialog.findViewById(R.id.btn_cancel);
+        Button btnConfirm = dialog.findViewById(R.id.btn_confirm);
+
+        OldPassword = Global.user.getPassword();
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(! (edt_OldPass.getText().toString().equals(OldPassword))){
+                    Toast.makeText(getApplicationContext(), "Mật khẩu cũ không đúng ! ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(edt_OldPass.getText().toString().equals("") || edt_NewPass.getText().toString().equals("") || edt_ReNewPass.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Không được để trống ! ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(! edt_NewPass.getText().toString().equals(edt_ReNewPass.getText().toString())){
+                    Toast.makeText(getApplicationContext(), "Mật khẩu mới không trùng nhau ! ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                dbUser = FirebaseDatabase.getInstance().getReference("users").child(Global.user.getId());
+                UserOj user1 = Global.user;
+                user1.setPassword(edt_NewPass.getText().toString());
+                dbUser.setValue(user1);
+                Global.update(user1);
+
+                Toast.makeText(getApplicationContext(), "Đã thay đổi mật khẩu ! ", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private AlertDialog Alert_Logout(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Đăng xuất");
+        builder.setMessage("Bạn có muốn đăng xuất ?");
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(ActivitySetting.this , activity_login.class);
+                startActivity(intent);
+                Global.logout();
+                setResult(RESULT_OK);
+                finish();
+            }
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        AlertDialog dialog = builder.create();
+
+        return dialog;
+    }
+
+//    private AlertDialog Alert_RePassword(){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//
+//        builder.setTitle("Đổi mật khẩu");
+//        builder.setMessage("Xác nhận đổi mật khẩu ?");
+//        builder.setCancelable(false);
+//
+//        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//            }
+//        });
+//        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                dialogInterface.cancel();
+//            }
+//        });
+//        AlertDialog dialog = builder.create();
+//
+//        return dialog;
+//    }
 }

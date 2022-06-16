@@ -33,7 +33,7 @@ public class Message extends AppCompatActivity {
     private EditText edtMessage;
     private Button btnSend, btnBack;
     private TextView tvUserChat;
-    private String idChat, idUserChat;
+    private String idChat, idUserChat ;
     private UserOj userChat;
     private DatabaseReference dbMessages;
     private ImageView dotStatus, imgUserChat;

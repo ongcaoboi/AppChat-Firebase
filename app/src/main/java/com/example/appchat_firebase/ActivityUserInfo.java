@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -31,9 +35,9 @@ import com.google.firebase.database.ValueEventListener;
 public class ActivityUserInfo extends AppCompatActivity {
 
     private ImageView img_UserInfo, dotStatus;
-    private TextView tv_UserInfo, tv_Chat;
+    private TextView tv_UserInfo, tv_Chat , tv_Phonenumber;
     private Button btnQL;
-    private String idUserChat, nameUserChat, idChat = "";
+    private String idUserChat, nameUserChat, sdt , idChat = "";
     DatabaseReference dbContact;
 
     @Override
@@ -44,6 +48,7 @@ public class ActivityUserInfo extends AppCompatActivity {
 
         tv_Chat = (TextView) findViewById(R.id.tv_Chat);
         tv_UserInfo = (TextView) findViewById(R.id.tv_NameUser);
+        tv_Phonenumber = (TextView) findViewById(R.id.tv_PhoneNumber);
         img_UserInfo = (ImageView) findViewById(R.id.img_UserInfo);
         dotStatus = (ImageView) findViewById(R.id.dot_status);
 
@@ -77,7 +82,10 @@ public class ActivityUserInfo extends AppCompatActivity {
             finish();
         }
         nameUserChat = intentUser.getStringExtra("name");
+        sdt = intentUser.getStringExtra("sdt");
+
         tv_UserInfo.setText(nameUserChat);
+        tv_Phonenumber.setText(sdt);
 
         String gender = intentUser.getStringExtra("gender");
         if(gender.equals("male")){
@@ -93,6 +101,18 @@ public class ActivityUserInfo extends AppCompatActivity {
             dotStatus.setBackgroundResource(R.drawable.dot_offline);
         }
 
+        tv_Phonenumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog dialog = Alert();
+                dialog.show();
+
+//                String sdt = tv_Phonenumber.getText().toString();
+//                Intent i = new Intent(Intent.ACTION_DIAL);
+//                i.setData(Uri.parse("tel: " + sdt));
+//                startActivity(i);
+            }
+        });
         btnQL = (Button) findViewById(R.id.btnQL);
         btnQL.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,5 +196,32 @@ public class ActivityUserInfo extends AppCompatActivity {
         });
 
         dialog.show();
+    }
+
+    private AlertDialog Alert(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Quay số");
+        builder.setMessage("Bạn có muốn thực hiện quay số ?");
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String sdt = tv_Phonenumber.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel: " + sdt));
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        AlertDialog dialog = builder.create();
+
+        return dialog;
     }
 }
