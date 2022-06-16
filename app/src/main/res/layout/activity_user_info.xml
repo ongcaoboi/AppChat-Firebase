@@ -54,9 +54,9 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/liner_info"
-        app:layout_constraintStart_toStartOf="@+id/liner_info"
-        app:layout_constraintTop_toBottomOf="@+id/liner_info" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_PhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/tv_PhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PhoneNumber" />
 
     <TextView
         android:id="@+id/tv_PhoneNumber"
@@ -69,9 +69,9 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tv_Chat"
-        app:layout_constraintStart_toStartOf="@+id/tv_Chat"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Chat" />
+        app:layout_constraintEnd_toEndOf="@+id/liner_info"
+        app:layout_constraintStart_toStartOf="@+id/liner_info"
+        app:layout_constraintTop_toBottomOf="@+id/liner_info" />
 
     <Button
         android:id="@+id/btnQL"

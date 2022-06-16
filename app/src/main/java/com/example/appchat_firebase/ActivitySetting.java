@@ -227,6 +227,10 @@ public class ActivitySetting extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Mật khẩu mới không trùng nhau ! ", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(edt_NewPass.getText().toString().equals(edt_OldPass.getText().toString())){
+                    Toast.makeText(getApplicationContext(), "Không phát hiện thay đổi ! ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 dbUser = FirebaseDatabase.getInstance().getReference("users").child(Global.user.getId());
                 UserOj user1 = Global.user;
@@ -269,28 +273,4 @@ public class ActivitySetting extends AppCompatActivity {
 
         return dialog;
     }
-
-//    private AlertDialog Alert_RePassword(){
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//
-//        builder.setTitle("Đổi mật khẩu");
-//        builder.setMessage("Xác nhận đổi mật khẩu ?");
-//        builder.setCancelable(false);
-//
-//        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//
-//            }
-//        });
-//        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                dialogInterface.cancel();
-//            }
-//        });
-//        AlertDialog dialog = builder.create();
-//
-//        return dialog;
-//    }
 }
