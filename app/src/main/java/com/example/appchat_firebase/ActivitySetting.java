@@ -8,8 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -24,9 +22,6 @@ import android.widget.Toast;
 import com.example.appchat_firebase.services.Global;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ActivitySetting extends AppCompatActivity {
 
@@ -256,8 +251,6 @@ public class ActivitySetting extends AppCompatActivity {
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(ActivitySetting.this , activity_login.class);
-                startActivity(intent);
                 Global.logout();
                 setResult(RESULT_OK);
                 finish();

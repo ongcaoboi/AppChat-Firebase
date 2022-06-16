@@ -7,7 +7,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -16,8 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.appchat_firebase.services.ChatProcess;
-import com.example.appchat_firebase.services.ChatTmp;
 import com.example.appchat_firebase.services.Global;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -49,7 +45,7 @@ public class ContactMain extends Fragment {
         editSearchContact = (EditText) view.findViewById(R.id.input_search_contact);
         arrayUser = new ArrayList<UserOj>();
         userDatabase = FirebaseDatabase.getInstance().getReference("users");
-        setAdapter(arrayUser);
+
         userDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -62,7 +58,7 @@ public class ContactMain extends Fragment {
                     arrayUser.add(user);
                 }
                 arrayUserOld = arrayUser;
-                adapter.notifyDataSetChanged();
+                setAdapter(container, arrayUser);
             }
 
             @Override
@@ -79,7 +75,7 @@ public class ContactMain extends Fragment {
                 UserOj user = arrayUser.get(i);
                 intent.putExtra("name", user.getFirstName()+" "+user.getLastName());
                 String gender = "male";
-                String sdt = Global.user.getSdt();
+                String sdt = user.getSdt();
                 if(!user.isGioiTinh()) gender = "female";
                 String status = "offline";
                 if(user.isTrangThai()) status = "online";
@@ -100,7 +96,7 @@ public class ContactMain extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String value = editSearchContact.getText().toString().toLowerCase(Locale.ROOT);
-                search(value);
+                search(container, value);
             }
 
             @Override
@@ -112,9 +108,9 @@ public class ContactMain extends Fragment {
         lvUser.setAdapter(adapter);
         return view;
     }
-    private void search(String text){
+    private void search(ViewGroup container, String text){
         if(text.isEmpty()){
-            setAdapter(arrayUserOld);
+            setAdapter(container, arrayUserOld);
             return;
         }
         List<UserOj> listUserTmp = new ArrayList<>();
@@ -123,10 +119,10 @@ public class ContactMain extends Fragment {
                 listUserTmp.add(user);
             }
         }
-        setAdapter(listUserTmp);
+        setAdapter(container, listUserTmp);
     }
-    private void setAdapter(List list){
-        adapter = new UserAdapter(getContext(),R.layout.item_contact,list);
+    private void setAdapter(ViewGroup container, List list){
+        adapter = new UserAdapter(container.getContext(),R.layout.item_contact,list);
         lvUser.setAdapter(adapter);
     }
 }

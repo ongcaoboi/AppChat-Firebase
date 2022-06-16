@@ -1,7 +1,6 @@
 package com.example.appchat_firebase;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.lifecycle.GenericLifecycleObserver;
-
 import com.example.appchat_firebase.services.ChatMainTmp;
-import com.example.appchat_firebase.services.ChatProcess;
 import com.example.appchat_firebase.services.Global;
 
 import java.util.List;
@@ -45,28 +41,30 @@ public class ChatMainAdapter extends ArrayAdapter<ChatMainTmp> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        UserOj user = chatMainTmp.get(position).getUser();
-        if(user.isGioiTinh()){
-            viewHolder.imgAvatar.setBackgroundResource(R.drawable.male);
-        }else {
-            viewHolder.imgAvatar.setBackgroundResource(R.drawable.female);
-        }
-        viewHolder.tvName.setText(user.getFirstName().toString()+" "+user.getLastName().toString());
-        String newMessage = "";
-        if(chatMainTmp.get(position).getChatInfo().getMessageNew().getUserId().equals(Global.user.getId())){
-            newMessage = "Bạn: "+chatMainTmp.get(position).getChatInfo().getMessageNew().getMsg();
-        }else{
-            newMessage =chatMainTmp.get(position).getUser().getLastName()+": "+chatMainTmp.get(position).getChatInfo().getMessageNew().getMsg();
-        }
-        String value = newMessage;
-        if(newMessage.length() > 35){
-            value = newMessage.substring(0,31)+"...";
-        }
-        viewHolder.tvLastestMessage.setText(value);
-        if(user.isTrangThai()){
-            viewHolder.dotStatus.setBackgroundResource(R.drawable.dot_online);
-        }else{
-            viewHolder.dotStatus.setBackgroundResource(R.drawable.dot_offline);
+        if(!chatMainTmp.isEmpty()){
+            UserOj user = chatMainTmp.get(position).getUser();
+            if(user.isGioiTinh()){
+                viewHolder.imgAvatar.setBackgroundResource(R.drawable.male);
+            }else {
+                viewHolder.imgAvatar.setBackgroundResource(R.drawable.female);
+            }
+            viewHolder.tvName.setText(user.getFirstName().toString()+" "+user.getLastName().toString());
+            String newMessage = "";
+            if(chatMainTmp.get(position).getChatInfo().getMessageNew().getUserId().equals(Global.user.getId())){
+                newMessage = "Bạn: "+chatMainTmp.get(position).getChatInfo().getMessageNew().getMsg();
+            }else{
+                newMessage =chatMainTmp.get(position).getUser().getLastName()+": "+chatMainTmp.get(position).getChatInfo().getMessageNew().getMsg();
+            }
+            String value = newMessage;
+            if(newMessage.length() > 35){
+                value = newMessage.substring(0,31)+"...";
+            }
+            viewHolder.tvLastestMessage.setText(value);
+            if(user.isTrangThai()){
+                viewHolder.dotStatus.setBackgroundResource(R.drawable.dot_online);
+            }else{
+                viewHolder.dotStatus.setBackgroundResource(R.drawable.dot_offline);
+            }
         }
 
         return convertView;

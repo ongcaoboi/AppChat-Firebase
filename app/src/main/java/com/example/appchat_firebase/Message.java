@@ -6,13 +6,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appchat_firebase.services.Global;
 import com.google.firebase.database.DataSnapshot;
@@ -140,10 +143,34 @@ public class Message extends AppCompatActivity {
                 finish();
             }
         });
+
+        edtMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onKeyboard();
+            }
+        });
     }
     @Override
-    public void onDestroy() {
+    protected void onDestroy() {
         super.onDestroy();
         Global.idChatOnOpen = null;
+    }
+    private void onKeyboard(){
+        final View activityRootView = findViewById(R.id.messageRoot);
+        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Rect r = new Rect();
+                activityRootView.getWindowVisibleDisplayFrame(r);
+                int heightDiff = activityRootView.getRootView().getHeight() - r.height();
+                if(heightDiff > 0.25*activityRootView.getRootView().getHeight()){
+                    if(mListMessage.size() > 0){
+                        rcvMessage.scrollToPosition(mListMessage.size() -1);
+                        activityRootView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    }
+                }
+            }
+        });
     }
 }

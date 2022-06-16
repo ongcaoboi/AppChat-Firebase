@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.appchat_firebase.services.Global;
 import com.google.firebase.database.DataSnapshot;
@@ -95,6 +94,8 @@ public class activity_login extends AppCompatActivity {
                             startActivity(intent);
                             isLogin = true;
                             finish();
+                            email = "";
+                            password = "";
                         }
                     }
 

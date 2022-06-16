@@ -19,6 +19,7 @@ import com.example.appchat_firebase.services.ChatMainTmp;
 import com.example.appchat_firebase.services.ChatProcess;
 import com.example.appchat_firebase.services.ChatTmp;
 import com.example.appchat_firebase.services.Global;
+import com.example.appchat_firebase.services.LogNotificationService;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,7 +70,7 @@ public class ChatMain extends Fragment {
                         messages.add(messageOj);
                     }
                     messages.sort(Comparator.comparing(MessageOj::getTime).reversed());
-                    if(!messages.isEmpty()){
+                    if(!messages.isEmpty() && Global.user != null){
                         if(chatTmp.getUser_1().equals(Global.user.getId())){
                             ChatProcess chatP = new ChatProcess(key, chatTmp.getUser_2(), messages.get(0));
                             arrChatProcess.add(chatP);
@@ -83,6 +84,7 @@ public class ChatMain extends Fragment {
                 userDatabase.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(Global.user == null) return;
                         chatMainTmp.clear();
                         chatMainTmpOld.clear();
                         for (DataSnapshot user : snapshot.getChildren()){
@@ -105,7 +107,7 @@ public class ChatMain extends Fragment {
                         });
                         Global.chats = chatMainTmp;
                         chatMainTmpOld = chatMainTmp;
-                        setAdapter(chatMainTmp);
+                        setAdapter(container, chatMainTmp);
                     }
 
                     @Override
@@ -120,6 +122,8 @@ public class ChatMain extends Fragment {
                 Toast.makeText(getContext(), "Get list user failed!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        lvUser.setAdapter(adapter);
 
         lvUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -140,7 +144,7 @@ public class ChatMain extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String value = editSearchChat.getText().toString().toLowerCase(Locale.ROOT);
-                search(value);
+                search(container, value);
             }
 
             @Override
@@ -151,9 +155,9 @@ public class ChatMain extends Fragment {
 
         return view;
     }
-    private void search(String text){
+    private void search(ViewGroup container, String text){
         if(text.isEmpty()){
-            setAdapter(chatMainTmpOld);
+            setAdapter(container, chatMainTmpOld);
             return;
         }
         List<ChatMainTmp> listChatTmp = new ArrayList<>();
@@ -162,10 +166,10 @@ public class ChatMain extends Fragment {
                 listChatTmp.add(chat);
             }
         }
-        setAdapter(listChatTmp);
+        setAdapter(container, listChatTmp);
     }
-    private void setAdapter(List list){
-        adapter = new ChatMainAdapter(getContext(),R.layout.item_chatpage,list);
+    private void setAdapter(ViewGroup container, List list){
+        adapter = new ChatMainAdapter(container.getContext() ,R.layout.item_chatpage,list);
         lvUser.setAdapter(adapter);
     }
 }

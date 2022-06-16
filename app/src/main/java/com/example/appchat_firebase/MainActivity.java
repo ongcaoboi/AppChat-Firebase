@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView titleMain;
     private DatabaseReference dbUser;
     private ImageView imgUserMain;
+    private Intent intentNotification;
+    private static final int REQUEST_CODE_EXAMPLE = 0x9345;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +56,8 @@ public class MainActivity extends AppCompatActivity {
             imgUserMain.setBackgroundResource(R.drawable.female);
         }
 
-//        Intent intent = new Intent(this, LogNotificationService.class);
-//        startForegroundService(intent);
-
+        intentNotification = new Intent(this, LogNotificationService.class);
+        startForegroundService(intentNotification);
 
         dbUser = FirebaseDatabase.getInstance().getReference("users").child(Global.user.getId()).child("trangThai");
         dbUser.setValue(true);
@@ -113,21 +114,31 @@ public class MainActivity extends AppCompatActivity {
         if(!Global.user.isGioiTinh()){
             gender = "female";
         }
-        Intent i = new Intent(getApplicationContext(), ActivitySetting.class);
+        final Intent i = new Intent(this, ActivitySetting.class);
         i.putExtra("name",name);
         i.putExtra("email",email);
         i.putExtra("sdt",sdt);
         i.putExtra("gender",gender);
-        startActivityForResult(i,5);
+        startActivityForResult(i,REQUEST_CODE_EXAMPLE);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if(requestCode==5) {
-            if(resultCode==RESULT_OK) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE_EXAMPLE) {
+            if(resultCode == RESULT_OK){
+                Intent intent = new Intent(this , activity_login.class);
+                startActivity(intent);
+                Intent intent_ = new Intent(this, LogNotificationService.class);
+                Global.ACTION_FOREGROUND = false;
+                startService(intent_);
+                stopService(intentNotification);
                 finish();
             }
         }
-        super.onActivityResult(requestCode, resultCode, data);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbUser.setValue(false);
     }
 }
