@@ -220,6 +220,7 @@ public class ActivityUserInfo extends AppCompatActivity {
                 dialogInterface.cancel();
             }
         });
+
         AlertDialog dialog = builder.create();
 
         return dialog;
