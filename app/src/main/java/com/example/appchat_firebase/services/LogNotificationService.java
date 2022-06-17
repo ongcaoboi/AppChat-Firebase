@@ -73,6 +73,7 @@ public class LogNotificationService extends Service {
                                         list.sort(Comparator.comparing(MessageOj::getTime).reversed());
                                         if(!list.isEmpty() && Global.user != null) {
                                             if (list.get(0).getUserId().equals(Global.user.getId())) return;
+                                            if(list.get(0).getStatus() == 1) return;
                                             sendNotificationMessage(chat.getUser().getFirstName() + " " + chat.getUser().getLastName(), list.get(0).getMsg());
                                         }
                                     }

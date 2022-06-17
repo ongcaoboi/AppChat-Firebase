@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appchat_firebase.services.ChatProcess;
 import com.example.appchat_firebase.services.Global;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +34,7 @@ public class Message extends AppCompatActivity {
     private RecyclerView rcvMessage;
     private MessageAdapter messageAdapter;
     private List<MessageOj> mListMessage;
+    private List<ChatProcess> mListMessageProcess;
     private EditText edtMessage;
     private Button btnSend, btnBack;
     private TextView tvUserChat;
@@ -58,6 +60,7 @@ public class Message extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvMessage.setLayoutManager(linearLayoutManager);
         mListMessage = new ArrayList<>();
+        mListMessageProcess = new ArrayList<>();
         messageAdapter = new MessageAdapter();
         messageAdapter.setData(mListMessage);
 
@@ -75,12 +78,23 @@ public class Message extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mListMessage.clear();
+                mListMessageProcess.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     MessageOj messageOj = dataSnapshot.getValue(MessageOj.class);
+                    String key = dataSnapshot.getKey();
                     mListMessage.add(messageOj);
+                    mListMessageProcess.add(new ChatProcess(key, messageOj.getUserId(), messageOj));
                 }
                 mListMessage.sort(Comparator.comparing(MessageOj::getTime));
+                mListMessageProcess.sort(Comparator.comparing(ChatProcess::getTime).reversed());
                 rcvMessage.scrollToPosition(mListMessage.size()-1);
+                if(!mListMessageProcess.isEmpty()){
+                    ChatProcess chatProcess = mListMessageProcess.get(0);
+                    if(idChat.equals(Global.idChatOnOpen) && !chatProcess.getIdUser().equals(Global.user.getId())){
+                        System.out.println(chatProcess.getMessageNew().getMsg());
+                        dbMessages.child(chatProcess.getIdChat()).child("status").setValue(1);
+                    }
+                }
                 messageAdapter.notifyDataSetChanged();
             }
 

@@ -26,6 +26,10 @@ public class ChatProcess {
         return messageNew;
     }
 
+    public long getTime(){
+        return messageNew.getTime();
+    }
+
     public void setMessageEnd(MessageOj messageNew) {
         this.messageNew = messageNew;
     }
